@@ -20,7 +20,7 @@ public class StudentController {
     @GetMapping("/students")
     public String listStudents(Model model){
         List<StudentDto> students =studentService.getAllStudents();
-        model.addAttribute("student", students);
+        model.addAttribute("students", students);
         return "students";
     }
 }
