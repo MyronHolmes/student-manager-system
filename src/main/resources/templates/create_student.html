@@ -16,9 +16,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/students/new}"><span class="sr-only">New Student</span></a>
-      </li>
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/students/new}"><span class="sr-only">New Student</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/students}"><span class="sr-only">Students</span></a>
+        </li>
     </ul>
   </div>
 </nav>
@@ -46,6 +49,7 @@
                             type="text"
                             th:field="*{firstName}"
                     >
+                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label"> Student Last Name</label>
@@ -57,6 +61,7 @@
                             type="text"
                             th:field="*{lastName}"
                     >
+                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label"> Student Email Address</label>
@@ -68,6 +73,7 @@
                             type="text"
                             th:field="*{email}"
                     >
+                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
