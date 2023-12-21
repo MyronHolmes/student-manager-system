@@ -3,12 +3,11 @@ package com.myprojects.sms.controller;
 import com.myprojects.sms.dto.StudentDto;
 import com.myprojects.sms.service.StudentService;
 import jakarta.validation.Valid;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,5 +43,12 @@ public class StudentController {
 
         studentService.createStudent(student);
         return "redirect:/students";
+    }
+
+    @GetMapping("/students/{studentId}/edit")
+    public String editStudent(@PathVariable("studentId") Long studentId, Model model){
+        StudentDto student = studentService.getStudentById(studentId);
+        model.addAttribute("student", student);
+        return "edit_student";
     }
 }
