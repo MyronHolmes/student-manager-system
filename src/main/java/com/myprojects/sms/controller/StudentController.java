@@ -75,4 +75,13 @@ public class StudentController {
         studentService.deleteStudent(studentId);
         return "redirect:/students";
     }
+
+//    handler method to handle view student request request
+    @GetMapping("/students/{studentId}/view")
+    public String viewStudent(@PathVariable("studentId") Long studentId, Model model){
+        StudentDto student = studentService.getStudentById(studentId);
+        model.addAttribute("student", student);
+        return "view_student";
+
+    }
 }
